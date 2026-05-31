@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="64" fill="#1a1814"/>
+  <rect x="48" y="340" width="416" height="48" rx="8" fill="#c9a84c"/>
+  <rect x="48" y="300" width="416" height="24" rx="4" fill="#a08030" opacity="0.7"/>
+  <text x="256" y="280" font-family="Arial Black, sans-serif" font-size="110" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="auto">П59</text>
+  <text x="256" y="420" font-family="Arial, sans-serif" font-size="44" font-weight="700" fill="#1a1814" text-anchor="middle" dominant-baseline="middle">АСФАЛЬТ</text>
+</svg>

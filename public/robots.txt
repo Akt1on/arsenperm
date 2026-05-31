@@ -1,0 +1,48 @@
+# === Пермь Асфальт 59 — robots.txt ===
+# https://permasfalt59.ru
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /auth
+Disallow: /auth/
+Disallow: /api/
+Disallow: /*?*utm_
+Crawl-delay: 1
+
+# Яндекс — отдельные правила для Пермского региона
+User-agent: Yandex
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /auth
+Disallow: /auth/
+Disallow: /api/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid /
+Crawl-delay: 2
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+Disallow: /api/
+Crawl-delay: 0
+
+# Bingbot
+User-agent: bingbot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+Crawl-delay: 2
+
+# Mail.ru Bot (важен для рунета)
+User-agent: Mail.Ru
+Allow: /
+Disallow: /admin
+Disallow: /auth
+Disallow: /api/
+
+Sitemap: https://permasfalt59.ru/sitemap.xml
+Host: permasfalt59.ru

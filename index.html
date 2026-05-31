@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Critical: preconnect to font origins BEFORE stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload the two most-used font files (Bebas Neue + Nunito Sans 400) -->
+    <!-- These prevent FOUT on first paint for display/body fonts -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXoo9WdhyyTh89ZNpQ.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/nunitosans/v15/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfGWVpNn64CL7U8upHZIbMV51Q.woff2"
+      crossorigin
+    />
+
+    <!-- Non-blocking font stylesheet (display=swap already handles render) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap"
+      />
+    </noscript>
+
+    <!-- Fallback title/description for crawlers before React hydrates -->
+    <title>Пермь Асфальт 59 — асфальтирование в Перми и крае</title>
+    <meta
+      name="description"
+      content="Профессиональное асфальтирование в Перми и Пермском крае. Тротуарная плитка, демонтаж, земляные работы. Гарантия 3 года. Выезд и замер бесплатно."
+    />
+    <meta name="theme-color" content="#d4a017" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

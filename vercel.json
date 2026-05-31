@@ -1,0 +1,58 @@
+{
+  "buildCommand": "bun run build",
+  "outputDirectory": "dist/client",
+  "installCommand": "bun install --ignore-scripts",
+  "framework": null,
+  "rewrites": [
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/api/:path*",  "destination": "/api/:path*"  },
+    { "source": "/(.*)",        "destination": "/index.html"  }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.webp",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=3600" },
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options",  "value": "nosniff" },
+        { "key": "X-Frame-Options",          "value": "SAMEORIGIN" },
+        { "key": "X-XSS-Protection",         "value": "1; mode=block" },
+        { "key": "Referrer-Policy",          "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/ceny",                          "destination": "/tseny",     "permanent": true },
+    { "source": "/o-nas",                         "destination": "/about",     "permanent": true },
+    { "source": "/kontakty",                      "destination": "/contacts",  "permanent": true },
+    { "source": "/otzyvy",                        "destination": "/portfolio", "permanent": true },
+    { "source": "/obekty",                        "destination": "/portfolio", "permanent": true },
+    { "source": "/uslugi",                        "destination": "/services",  "permanent": true },
+    { "source": "/uslugi/:slug",                  "destination": "/services/:slug", "permanent": true },
+    { "source": "/politika-konfidencialnosti",    "destination": "/privacy-policy", "permanent": true },
+    { "source": "/admin/login",                   "destination": "/auth",      "permanent": true }
+  ]
+}

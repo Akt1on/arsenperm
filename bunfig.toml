@@ -1,0 +1,2 @@
+[install]
+# minimumReleaseAge removed — it blocks installs on Vercel CI

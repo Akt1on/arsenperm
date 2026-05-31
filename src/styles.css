@@ -1,0 +1,375 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: 'Bebas Neue', 'Oswald', system-ui, sans-serif;
+  --font-sans: 'Nunito Sans', 'Inter', system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* ——— СВЕТЛАЯ ТЕМА: Асфальт + Дорожная разметка ——— */
+  --background: oklch(0.96 0.005 80);
+  --foreground: oklch(0.13 0.01 60);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.13 0.01 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0.01 60);
+
+  /* Primary — насыщенный жёлтый (дорожная разметка) */
+  --primary: oklch(0.82 0.19 85);
+  --primary-foreground: oklch(0.1 0.01 60);
+
+  --gold: oklch(0.82 0.19 85);
+  --gold-foreground: oklch(0.1 0.01 60);
+
+  --secondary: oklch(0.22 0.008 60);
+  --secondary-foreground: oklch(0.97 0.005 60);
+
+  --surface: oklch(0.94 0.006 80);
+  --surface-2: oklch(0.89 0.008 75);
+
+  --muted: oklch(0.93 0.005 80);
+  --muted-foreground: oklch(0.48 0.008 60);
+
+  --accent: oklch(0.82 0.19 85);
+  --accent-foreground: oklch(0.1 0.01 60);
+
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.97 0 0);
+
+  --border: oklch(0.84 0.008 75);
+  --input: oklch(0.97 0.004 75);
+  --ring: oklch(0.82 0.19 85);
+
+  /* Тени */
+  --shadow-card: 0 2px 16px -4px oklch(0 0 0 / 0.10), 0 1px 3px oklch(0 0 0 / 0.06);
+  --shadow-elevated: 0 8px 32px -8px oklch(0 0 0 / 0.14), 0 2px 8px oklch(0 0 0 / 0.07);
+  --shadow-glow: 0 0 40px -8px oklch(0.82 0.19 85 / 0.5);
+  --shadow-hero: 0 24px 80px -20px oklch(0 0 0 / 0.5);
+  --shadow-gold: 0 6px 20px -6px oklch(0.82 0.19 85 / 0.55);
+
+  --gradient-primary: linear-gradient(135deg, oklch(0.87 0.19 88), oklch(0.76 0.20 78));
+  --gradient-dark: linear-gradient(180deg, oklch(0.18 0.008 60), oklch(0.12 0.005 60));
+  --gradient-asphalt: linear-gradient(135deg, oklch(0.22 0.008 60) 0%, oklch(0.30 0.01 65) 100%);
+  --gradient-hero-overlay: linear-gradient(100deg, oklch(0.1 0.01 60 / 0.92) 0%, oklch(0.1 0.01 60 / 0.75) 55%, oklch(0.1 0.01 60 / 0.35) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.87 0.19 88), oklch(0.76 0.20 78));
+}
+
+.dark { color-scheme: dark; }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-7xl px-5 md:px-8; }
+
+  .text-gradient-gold {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 40px oklch(0.82 0.19 85 / 0.5);
+  }
+
+  /* Белая карточка */
+  .glass {
+    background: oklch(1 0 0 / 0.92);
+    backdrop-filter: blur(12px) saturate(120%);
+    border: 1px solid oklch(0.84 0.008 75 / 0.9);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Тёмная карточка */
+  .glass-dark {
+    background: oklch(0.18 0.008 60 / 0.88);
+    backdrop-filter: blur(16px);
+    border: 1px solid oklch(1 0 0 / 0.10);
+    box-shadow: 0 8px 32px -8px oklch(0 0 0 / 0.4);
+  }
+
+  /* Жёлтая кнопка */
+  .btn-gold {
+    background: var(--gradient-primary);
+    color: var(--gold-foreground);
+    box-shadow: var(--shadow-gold);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    font-weight: 700;
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px -6px oklch(0.82 0.19 85 / 0.70);
+    filter: brightness(1.04);
+  }
+  .btn-gold:focus-visible { outline: 3px solid oklch(0.82 0.19 85 / 0.5); outline-offset: 2px; }
+  .bg-gradient-gold { background: var(--gradient-primary); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
+
+  .btn-dark {
+    background: var(--gradient-asphalt);
+    color: oklch(0.97 0.005 60);
+    box-shadow: 0 4px 16px -4px oklch(0 0 0 / 0.3);
+    transition: transform .2s ease, filter .2s ease;
+    font-weight: 600;
+  }
+  .btn-dark:hover { transform: translateY(-2px); filter: brightness(1.12); }
+
+  /* Карточка с верхней жёлтой полосой */
+  .card-accent-top {
+    position: relative;
+  }
+  .card-accent-top::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .card-accent-top:hover::before { opacity: 1; }
+
+  /* Чипы */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 9999px;
+    padding: 0.25rem 0.875rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .chip-primary {
+    background: oklch(0.82 0.19 85 / 0.12);
+    color: oklch(0.60 0.18 80);
+    border: 1px solid oklch(0.82 0.19 85 / 0.25);
+  }
+  .chip-white {
+    background: oklch(1 0 0 / 0.15);
+    color: oklch(0.82 0.19 85);
+    border: 1px solid oklch(1 0 0 / 0.25);
+  }
+
+  /* Heading underline effect */
+  .heading-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .heading-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -0.25em;
+    left: 0;
+    width: 3rem;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+  }
+
+  /* Stat numbers */
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+  }
+
+  /* Дорожная разметка */
+  .road-stripe {
+    background: repeating-linear-gradient(
+      90deg,
+      oklch(0.82 0.19 85) 0px,
+      oklch(0.82 0.19 85) 40px,
+      transparent 40px,
+      transparent 80px
+    );
+    height: 6px;
+  }
+  .divider-road {
+    height: 6px;
+    background: repeating-linear-gradient(
+      90deg,
+      oklch(0.82 0.19 85) 0px,
+      oklch(0.82 0.19 85) 40px,
+      transparent 40px,
+      transparent 80px
+    );
+  }
+
+  /* Hero overlay */
+  .hero-overlay {
+    background: var(--gradient-hero-overlay);
+  }
+
+  /* Asphalt texture */
+  .asphalt-pattern {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        oklch(0 0 0 / 0.025) 0px,
+        oklch(0 0 0 / 0.025) 2px,
+        transparent 2px,
+        transparent 10px
+      );
+  }
+
+  /* Form elements */
+  button, input, textarea { transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease; }
+  input, textarea {
+    background: var(--input);
+    border: 1.5px solid var(--border);
+  }
+  input:focus, textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px oklch(0.82 0.19 85 / 0.15);
+    outline: none;
+  }
+
+  /* Surface-1 for ExitIntentPopup */
+  .bg-surface-1 { background: var(--surface); }
+  .bg-surface { background: var(--surface); }
+  .bg-surface-2 { background: var(--surface-2); }
+
+  /* Pulse ring animation */
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 oklch(0.82 0.19 85 / 0.7); }
+    70% { box-shadow: 0 0 0 8px oklch(0.82 0.19 85 / 0); }
+    100% { box-shadow: 0 0 0 0 oklch(0.82 0.19 85 / 0); }
+  }
+  .animate-pulse-ring { animation: pulse-ring 2s infinite; }
+
+  /* Float up animation */
+  @keyframes float-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-float-up { animation: float-up .3s ease forwards; }
+
+  /* Scale 108 */
+  .group-hover\:scale-108:hover { transform: scale(1.08); }
+  .group:hover .group-hover\:scale-108 { transform: scale(1.08); }
+
+  /* Promo bar */
+  .promo-bar {
+    background: var(--gradient-primary);
+    color: oklch(0.1 0.01 60);
+  }
+}
+
+/* Bebas Neue + Nunito Sans via Google Fonts */
+/* Google Fonts loaded via <link> in __root.tsx for better performance */
+
+/* ─────────────────── Admin panel utilities ─────────────────── */
+  .bg-white { background: #ffffff; }
+  
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes zoomIn95 { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+  .animate-in { animation-fill-mode: both; }
+  .fade-in { animation: fadeIn 0.15s ease; }
+  .zoom-in-95 { animation: zoomIn95 0.15s ease; }
+  .duration-150 { animation-duration: 0.15s; }
+
+  /* Admin table row hover */
+  tbody tr { transition: background 0.15s ease; }
+
+  /* Line-clamp */
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* Divide utilities */
+  .divide-y > * + * { border-top: 1px solid var(--border); }
+  .divide-border > * + * { border-top-color: var(--border); }
+
+/* ─────────────────── Range slider ─────────────────── */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 999px;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: oklch(0.82 0.19 85);
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px oklch(0.82 0.19 85), 0 2px 8px oklch(0 0 0 / 0.2);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px oklch(0.82 0.19 85 / 0.3), 0 2px 8px oklch(0 0 0 / 0.2);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: oklch(0.82 0.19 85);
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px oklch(0.82 0.19 85);
+    cursor: pointer;
+  }
