@@ -38,35 +38,6 @@ import heroWebp768  from "@/assets/hero-768.webp";
 const BASE = "https://permasfalt59.ru";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Асфальтирование в Перми — цены от 1500 ₽/м² | Пермь Асфальт 59" },
-      { name: "description", content: "Асфальтирование в Перми от 1500 ₽/м². Ямочный ремонт, тротуарная плитка, земляные работы, аренда спецтехники, вывоз мусора. Работаем по Перми и всему Пермскому краю. Бесплатный выезд, гарантия 3 года. ☎ +7 (342) 277-77-10" },
-      { name: "keywords", content: "асфальтирование Пермь цена, укладка асфальта Пермь, асфальтировать двор Пермь, тротуарная плитка Пермь, благоустройство Пермь, демонтаж асфальта Пермь, ямочный ремонт Пермь, земляные работы Пермь, аренда спецтехники Пермь, вывоз мусора Пермь" },
-      { property: "og:title", content: "Асфальтирование в Перми от 1500 ₽/м² | Пермь Асфальт 59" },
-      { property: "og:description", content: "Асфальтирование, плитка, демонтаж и спецтехника в Перми. Бесплатный замер, договор и гарантия 3 года." },
-      { property: "og:url", content: BASE + "/" },
-      { property: "og:image", content: BASE + "/og-image.png" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:locale", content: "ru_RU" },
-    ],
-    links: [{ rel: "canonical", href: BASE + "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: FAQS.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }),
-      },
-    ],
-  }),
   component: HomePage,
 });
 

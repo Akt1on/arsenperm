@@ -11,31 +11,6 @@ const ABOUT_TITLE = "О компании Пермь Асфальт 59 — под
 const ABOUT_DESCRIPTION = "Пермь Асфальт 59 — 15 лет опыта, собственный парк спецтехники, 500+ выполненных объектов. Асфальтирование, тротуарная плитка, земляные работы в Перми и Пермском крае. Договор, гарантия 3 года.";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: ABOUT_TITLE },
-      { name: "description", content: ABOUT_DESCRIPTION },
-      { name: "keywords", content: "Пермь Асфальт 59 о компании, асфальтирование Пермь компания, подрядчик асфальтирование Пермь, благоустройство Пермь подрядчик, асфальтирование Пермь отзывы, асфальтирование Пермь гарантия, дорожное строительство Пермь компания" },
-      { property: "og:title", content: ABOUT_TITLE },
-      { property: "og:description", content: ABOUT_DESCRIPTION },
-      { property: "og:url", content: ABOUT_URL },
-      { property: "og:image", content: "https://permasfalt59.ru/og-image.png" },
-      { property: "og:site_name", content: "Пермь Асфальт 59" },
-      { property: "og:type", content: "website" },
-    ],
-    links: [{ rel: "canonical", href: ABOUT_URL }],
-    scripts: [{
-      type: "application/ld+json",
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "@id": ABOUT_URL + "/#page",
-        name: ABOUT_TITLE,
-        url: ABOUT_URL,
-        mainEntity: { "@type": "Organization", "@id": BASE + "/#organization" },
-      }),
-    }],
-  }),
   component: AboutPage,
 });
 

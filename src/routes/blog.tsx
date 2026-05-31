@@ -6,37 +6,6 @@ import { Section } from "@/components/site/Section";
 import { fetchPosts } from "@/lib/site-data";
 
 export const Route = createFileRoute("/blog")({
-  head: () => ({
-    meta: [
-      { title: "Блог об асфальтировании и благоустройстве в Перми — статьи и советы | Пермь Асфальт 59" },
-      { name: "description", content: "Экспертные статьи об асфальтировании, укладке тротуарной плитки, земляных работах и выборе подрядчика в Перми. Советы от практиков с 15-летним опытом." },
-      { name: "keywords", content: "блог асфальтирование Пермь, статьи укладка асфальта, советы благоустройство, как выбрать подрядчика асфальт Пермь, технология асфальтирования, стоимость асфальта Пермь" },
-      { property: "og:title", content: "Блог об асфальтировании в Перми | Пермь Асфальт 59" },
-      { property: "og:description", content: "Экспертные статьи об асфальтировании и благоустройстве от практиков с 15-летним опытом работы в Перми." },
-      { property: "og:url", content: "https://permasfalt59.ru/blog" },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://permasfalt59.ru/og-image.png" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://permasfalt59.ru/blog" },
-    ],
-    scripts: [{
-      type: "application/ld+json",
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "@id": "https://permasfalt59.ru/blog/#blog",
-        name: "Блог Пермь Асфальт 59",
-        description: "Статьи об асфальтировании и благоустройстве в Перми",
-        url: "https://permasfalt59.ru/blog",
-        publisher: {
-          "@type": "Organization",
-          name: "Пермь Асфальт 59",
-          url: "https://permasfalt59.ru",
-        },
-      }),
-    }],
-  }),
   component: BlogPage,
 });
 

@@ -13,89 +13,6 @@ export const Route = createFileRoute("/services/$slug")({
     const service = await fetchService(params.slug);
     return { service };
   },
-  head: ({ loaderData, params }) => {
-    const s = loaderData?.service;
-    const title = s
-      ? `${s.title} в Перми${s.price_from != null ? ` — от ${Number(s.price_from).toLocaleString("ru-RU")} ₽/${s.price_unit}` : ""} | Пермь Асфальт 59`
-      : "Услуга — Пермь Асфальт 59";
-    const description = s
-      ? `${s.short_description ?? ""}${s.price_from != null ? ` Цена от ${Number(s.price_from).toLocaleString("ru-RU")} ₽/${s.price_unit}.` : ""} Бесплатный выезд, договор и гарантия 3 года. Пермь и Пермский край.`
-      : "Профессиональные услуги по благоустройству в Перми и Пермском крае. Гарантия 3 года, бесплатный выезд.";
-    const url = `${BASE}/services/${params.slug}`;
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description.slice(0, 160) },
-        { name: "keywords", content: s ? `${s.title} Пермь, ${s.title} цена, ${s.title} Пермский край, заказать ${s.title} Пермь` : "" },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description.slice(0, 160) },
-        { property: "og:site_name", content: "Пермь Асфальт 59" },
-        { property: "og:type", content: "website" },
-        { property: "og:url", content: url },
-        ...(s?.image_url ? [
-          { property: "og:image", content: s.image_url },
-          { property: "og:image:alt", content: `${s.title} в Перми — Пермь Асфальт 59` },
-        ] : []),
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: title },
-        { name: "twitter:description", content: description.slice(0, 160) },
-      ],
-      links: [{ rel: "canonical", href: url }],
-      scripts: s ? [
-        // Service schema
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "@id": url + "/#service",
-            name: s.title,
-            description: s.short_description ?? s.description,
-            url,
-            image: s.image_url,
-            provider: {
-              "@type": "LocalBusiness",
-              "@id": BASE + "/#business",
-              name: "Пермь Асфальт 59",
-              telephone: "+73422777710",
-              areaServed: "Пермь и Пермский край",
-            },
-            areaServed: [
-              { "@type": "City", name: "Пермь" },
-              { "@type": "AdministrativeArea", name: "Пермский край" },
-            ],
-            offers: {
-              "@type": "Offer",
-              price: s.price_from,
-              priceCurrency: "RUB",
-              priceSpecification: {
-                "@type": "UnitPriceSpecification",
-                price: s.price_from,
-                priceCurrency: "RUB",
-                unitText: s.price_unit,
-              },
-              availability: "https://schema.org/InStock",
-              validFrom: new Date().toISOString().slice(0, 10),
-              seller: { "@type": "Organization", name: "Пермь Асфальт 59" },
-            },
-          }),
-        },
-        // BreadcrumbList
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Главная", item: BASE + "/" },
-              { "@type": "ListItem", position: 2, name: "Услуги", item: BASE + "/services" },
-              { "@type": "ListItem", position: 3, name: s.title, item: url },
-            ],
-          }),
-        },
-      ] : [],
-    };
-  },
   component: ServicePage,
 });
 
@@ -161,7 +78,7 @@ function ServicePage() {
               <DynIcon name={service.icon} className="h-7 w-7" />
             </div>
             <div>
-              <h1 {service.title} в Перми</h1>>{service.title} в Перми</h1>
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">{service.title} в Перми</h1>
               <p className="mt-4 text-lg text-white/75 max-w-2xl">{service.short_description}</p>
             </div>
           </div>

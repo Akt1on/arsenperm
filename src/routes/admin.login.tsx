@@ -4,12 +4,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { Loader2, LogIn, Shield, AlertCircle } from "lucide-react";
 
 export const Route = createFileRoute("/admin/login")({
-  head: () => ({
-    meta: [
-      { title: "Вход в админ-панель | Пермь Асфальт 59" },
-      { name: "robots", content: "noindex, nofollow" },
-    ],
-  }),
   component: AdminLoginPage,
 });
 

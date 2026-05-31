@@ -8,32 +8,6 @@ import { Phone, Check } from "lucide-react";
 const BASE = "https://permasfalt59.ru";
 
 export const Route = createFileRoute("/tseny")({
-  head: () => ({
-    meta: [
-      { title: `Цены на асфальтирование в Перми ${new Date().getFullYear()} — прайс-лист | Пермь Асфальт 59` },
-      { name: "description", content: `Актуальный прайс-лист на асфальтирование в Перми ${new Date().getFullYear()}. Цены на укладку асфальта, тротуарную плитку, земляные работы, ямочный ремонт. От 500 ₽/м². Бесплатный замер.` },
-      { name: "keywords", content: `цены асфальтирование Пермь ${new Date().getFullYear()}, прайс асфальтирование Пермь, стоимость укладки асфальта Пермь, прайс-лист благоустройство Пермь` },
-      { property: "og:title", content: `Цены на асфальтирование в Перми ${new Date().getFullYear()} — прайс-лист` },
-      { property: "og:description", content: "Прайс-лист на асфальтирование и благоустройство в Перми. Цены без скрытых доплат, договор, гарантия 3 года." },
-      { property: "og:url", content: BASE + "/tseny" },
-      { property: "og:image", content: BASE + "/og-image.png" },
-      { property: "og:site_name", content: "Пермь Асфальт 59" },
-    ],
-    links: [{ rel: "canonical", href: BASE + "/tseny" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Главная", item: BASE + "/" },
-            { "@type": "ListItem", position: 2, name: "Цены", item: BASE + "/tseny" },
-          ],
-        }),
-      },
-    ],
-  }),
   component: PricesPage,
 });
 

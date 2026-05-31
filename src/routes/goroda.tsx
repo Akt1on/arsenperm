@@ -6,32 +6,6 @@ import { CITIES } from "./goroda.$city";
 const BASE = "https://permasfalt59.ru";
 
 export const Route = createFileRoute("/goroda")({
-  head: () => ({
-    meta: [
-      { title: "Асфальтирование в городах Пермского края — Пермь Асфальт 59" },
-      { name: "description", content: "Выполняем асфальтирование, укладку тротуарной плитки и благоустройство в Перми, Краснокамске, Березниках, Соликамске, Чайковском, Кунгуре и других городах Пермского края." },
-      { name: "keywords", content: "асфальтирование Пермский край, укладка асфальта города Пермский край, благоустройство Пермский край, асфальтирование Пермь Краснокамск Березники, дорожные работы Пермский край" },
-      { property: "og:title", content: "Асфальтирование в городах Пермского края | Пермь Асфальт 59" },
-      { property: "og:description", content: "Работаем в Перми, Краснокамске, Березниках, Соликамске, Чайковском и других городах. Бесплатный выезд, гарантия 3 года." },
-      { property: "og:url", content: BASE + "/goroda" },
-      { property: "og:image", content: BASE + "/og-image.png" },
-      { property: "og:site_name", content: "Пермь Асфальт 59" },
-    ],
-    links: [{ rel: "canonical", href: BASE + "/goroda" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Главная", item: BASE + "/" },
-            { "@type": "ListItem", position: 2, name: "Города", item: BASE + "/goroda" },
-          ],
-        }),
-      },
-    ],
-  }),
   component: CitiesPage,
 });
 

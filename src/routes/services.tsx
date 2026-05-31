@@ -10,31 +10,6 @@ import { DynIcon } from "@/components/site/icon";
 const BASE = "https://permasfalt59.ru";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Услуги по асфальтированию в Перми — полный прайс | Пермь Асфальт 59" },
-      { name: "description", content: "Полный список услуг: асфальтирование от 1500 ₽/м², тротуарная плитка, демонтаж, земляные работы, аренда спецтехники, вывоз мусора в Перми. Договор, гарантия 3 года." },
-      { name: "keywords", content: "услуги асфальтирование Пермь, укладка асфальта Пермь цена, тротуарная плитка Пермь, демонтаж асфальта Пермь, земляные работы Пермь, аренда спецтехники Пермь" },
-      { property: "og:title", content: "Услуги по асфальтированию в Перми | Пермь Асфальт 59" },
-      { property: "og:description", content: "Асфальтирование, тротуарная плитка, демонтаж, земляные работы и спецтехника в Перми. Бесплатный выезд, гарантия 3 года." },
-      { property: "og:url", content: BASE + "/services" },
-      { property: "og:site_name", content: "Пермь Асфальт 59" },
-      { property: "og:image", content: "https://permasfalt59.ru/og-image.png" },
-    ],
-    links: [
-      { rel: "canonical", href: BASE + "/services" },
-    ],
-    scripts: [{
-      type: "application/ld+json",
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        name: "Услуги по асфальтированию в Перми",
-        url: BASE + "/services",
-        numberOfItems: 8,
-      }),
-    }],
-  }),
   component: ServicesLayout,
 });
 

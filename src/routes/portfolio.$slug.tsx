@@ -8,66 +8,6 @@ const BASE = "https://permasfalt59.ru";
 
 export const Route = createFileRoute("/portfolio/$slug")({
   loader: async ({ params }) => ({ project: await fetchProject(params.slug) }),
-  head: ({ loaderData, params }) => {
-    const p = loaderData?.project;
-    const title = p
-      ? `${p.title} — ${p.category ?? "портфолио"} | Пермь Асфальт 59`
-      : "Объект — Пермь Асфальт 59";
-    const description = p?.description?.slice(0, 160)
-      ?? `Реализованный проект в ${p?.location ?? "Перми"}: ${p?.title ?? ""}. Фото работ Пермь Асфальт 59.`;
-    const url = `${BASE}/portfolio/${params.slug}`;
-    const completedISO = p?.completed_at ? new Date(p.completed_at).toISOString() : undefined;
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-        { name: "keywords", content: p ? `${p.category ?? ""} Пермь, ${p.title}, портфолио асфальтирование Пермь` : "" },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:type", content: "article" },
-        { property: "og:url", content: url },
-        { property: "og:site_name", content: "Пермь Асфальт 59" },
-        { property: "og:locale", content: "ru_RU" },
-        ...(p?.cover_image ? [
-          { property: "og:image", content: p.cover_image },
-          { property: "og:image:alt", content: `${p.title} — Пермь Асфальт 59` },
-        ] : []),
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: title },
-        { name: "twitter:description", content: description },
-      ],
-      links: [{ rel: "canonical", href: url }],
-      scripts: p ? [{
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          "@id": url + "/#project",
-          name: p.title,
-          description: p.description,
-          url,
-          image: p.cover_image,
-          locationCreated: p.location
-            ? { "@type": "Place", name: p.location, address: { "@type": "PostalAddress", addressLocality: p.location, addressCountry: "RU" } }
-            : undefined,
-          dateCreated: completedISO,
-          creator: {
-            "@type": "Organization",
-            "@id": BASE + "/#organization",
-            name: "Пермь Асфальт 59",
-          },
-          breadcrumb: {
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Главная", item: BASE + "/" },
-              { "@type": "ListItem", position: 2, name: "Портфолио", item: BASE + "/portfolio" },
-              { "@type": "ListItem", position: 3, name: p.title, item: url },
-            ],
-          },
-        }),
-      }] : [],
-    };
-  },
   component: ProjectPage,
 });
 

@@ -11,19 +11,6 @@ const CONTACTS_TITLE = "Контакты — Пермь Асфальт 59 | Зв
 const CONTACTS_DESCRIPTION = "Контакты компании Пермь Асфальт 59: телефон +7 (342) 277-77-10, адрес — Пермь. Бесплатный выезд замерщика по Перми и Пермскому краю. Работаем пн–пт 8:00–20:00, сб 9:00–18:00.";
 
 export const Route = createFileRoute("/contacts")({
-  head: () => ({
-    meta: [
-      { title: CONTACTS_TITLE },
-      { name: "description", content: CONTACTS_DESCRIPTION },
-      { name: "keywords", content: "контакты асфальтирование Пермь, телефон Пермь Асфальт 59, адрес асфальтирование Пермь, заказать асфальтирование Пермь телефон, вызвать замерщика асфальт Пермь, обратная связь Пермь Асфальт 59" },
-      { property: "og:title", content: CONTACTS_TITLE },
-      { property: "og:description", content: CONTACTS_DESCRIPTION },
-      { property: "og:url", content: CONTACTS_URL },
-      { property: "og:site_name", content: "Пермь Асфальт 59" },
-      { property: "og:image", content: "https://permasfalt59.ru/og-image.png" },
-    ],
-    links: [{ rel: "canonical", href: CONTACTS_URL }],
-  }),
   component: ContactsPage,
 });
 

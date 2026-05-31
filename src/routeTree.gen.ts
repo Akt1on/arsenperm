@@ -26,7 +26,7 @@ import { Route as AdminReviewsImport } from './routes/admin.reviews'
 import { Route as AdminProjectsImport } from './routes/admin.projects'
 import { Route as AdminPostsImport } from './routes/admin.posts'
 import { Route as AdminLeadsImport } from './routes/admin.leads'
-import { Route as SitemapXmlImport } from './routes/sitemap[.]xml'
+
 import { Route as AdminGalleryImport } from './routes/admin.gallery'
 import { Route as AdminPricesImport } from './routes/admin.prices'
 import { Route as ServicesSlugImport } from './routes/services.$slug'
@@ -54,7 +54,7 @@ const AdminReviewsRoute = AdminReviewsImport.update({ path: '/reviews', getParen
 const AdminProjectsRoute = AdminProjectsImport.update({ path: '/projects', getParentRoute: () => AdminRoute } as any)
 const AdminPostsRoute = AdminPostsImport.update({ path: '/posts', getParentRoute: () => AdminRoute } as any)
 const AdminLeadsRoute = AdminLeadsImport.update({ path: '/leads', getParentRoute: () => AdminRoute } as any)
-const SitemapXmlRoute = SitemapXmlImport.update({ path: '/sitemap.xml', getParentRoute: () => rootRoute } as any)
+
 const AdminGalleryRoute = AdminGalleryImport.update({ path: '/gallery', getParentRoute: () => AdminRoute } as any)
 const AdminPricesRoute = AdminPricesImport.update({ path: '/prices', getParentRoute: () => AdminRoute } as any)
 const ServicesSlugRoute = ServicesSlugImport.update({ path: '/$slug', getParentRoute: () => ServicesRoute } as any)
@@ -103,7 +103,6 @@ export function createRouteTree() {
     PrivacyPolicyRoute,
     ServicesRoute._addFileChildren([ServicesSlugRoute]),
     TsenyRoute,
-    SitemapXmlRoute,
     AuthRoute,
     AdminRoute._addFileChildren([
       AdminLoginRoute,

@@ -159,62 +159,6 @@ export const Route = createFileRoute("/goroda/$city")({
     if (!cityData) throw notFound();
     return { cityData, citySlug: params.city };
   },
-  head: ({ loaderData, params }) => {
-    const c = loaderData?.cityData;
-    if (!c) return { meta: [] };
-    const title = `Асфальтирование в ${c.nameRod} — цены от 1500 ₽/м², выезд бесплатно | Пермь Асфальт 59`;
-    const description = `Асфальтирование в ${c.nameRod}${c.distance ? ` (${c.distance})` : ""} от 1500 ₽/м². ${c.services.slice(0, 3).join(", ")}. Бесплатный выезд замерщика, гарантия 3 года, договор. Звоните: +7 (342) 277-77-10.`;
-    const url = `${BASE}/goroda/${params.city}`;
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description.slice(0, 160) },
-        { name: "keywords", content: c.keywords },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description.slice(0, 160) },
-        { property: "og:url", content: url },
-        { property: "og:type", content: "website" },
-        { property: "og:image", content: `${BASE}/og-image.png` },
-        { property: "og:image:width", content: "1200" },
-        { property: "og:image:height", content: "630" },
-        { property: "og:site_name", content: "Пермь Асфальт 59" },
-        { property: "og:locale", content: "ru_RU" },
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: title },
-        { name: "twitter:description", content: description.slice(0, 160) },
-      ],
-      links: [
-        { rel: "canonical", href: url },
-      ],
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Главная", item: BASE + "/" },
-              { "@type": "ListItem", position: 2, name: "Города", item: BASE + "/goroda" },
-              { "@type": "ListItem", position: 3, name: c.name, item: url },
-            ],
-          }),
-        },
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "@id": BASE + "/#business",
-            name: "Пермь Асфальт 59",
-            description: `Асфальтирование и благоустройство в ${c.nameRod}`,
-            url: BASE,
-            telephone: "+73422777710",
-            areaServed: { "@type": "City", name: c.name },
-          }),
-        },
-      ],
-    };
-  },
   component: CityPage,
 });
 
